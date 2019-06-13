@@ -1,3 +1,4 @@
+import { EventRouteActivatorService } from './events/event-route-activator.service';
 import { appRoutes } from './../routes';
 import { ToasterService } from './common/toaster.service';
 import { EventService } from './events/shared/event.service';
@@ -13,6 +14,7 @@ import { NavbarComponent } from './nav/navbar/navbar.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { from } from 'rxjs';
 import { CreateEventComponent } from './events/create-event/create-event.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,14 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
     EventThumbnailComponent,
     NavbarComponent,
     EventDetailsComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EventService, ToasterService],
+  providers: [EventService, ToasterService, EventRouteActivatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
