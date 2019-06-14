@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEventComponent implements OnInit {
 
+  idDirty:boolean = false
+
   constructor(private router:Router) { }
 
   ngOnInit() {

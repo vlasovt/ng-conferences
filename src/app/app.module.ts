@@ -12,9 +12,9 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { from } from 'rxjs';
 import { CreateEventComponent } from './events/create-event/create-event.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { EventListResolverService } from './events/event-list-resolver.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,24 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EventService, ToasterService, EventRouteActivatorService],
+  providers: [EventService, 
+              ToasterService, 
+              EventRouteActivatorService,
+              {
+                provide: 'canDeactivateCreateEvent',
+                useValue: checkDirtyState
+              },
+              EventListResolverService
+             ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function checkDirtyState(component:CreateEventComponent){
+  if(component.idDirty)
+  {
+    return window.confirm('Are you sure you want to leave the screen without saving the event?')
+  }
+
+  return true;
+}
