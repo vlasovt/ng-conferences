@@ -1,3 +1,4 @@
+import { AuthService } from './user/auth.service';
 import {
   EventRouteActivatorService,
   EventService,
@@ -38,7 +39,8 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
                 provide: 'canDeactivateCreateEvent',
                 useValue: checkDirtyState
               },
-              EventListResolverService
+              EventListResolverService,
+              AuthService
              ],
   bootstrap: [AppComponent]
 })
