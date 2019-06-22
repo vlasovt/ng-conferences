@@ -5,17 +5,21 @@
     <div class="form-group">
       <label for="userName">User Name:</label>
       <em *ngIf="loginForm.controls.userName?.invalid
-                  && loginForm.controls.userName?.touched">Required</em>
+                  && (loginForm.controls.userName?.touched || mouseEntered)">Required</em>
       <input (ngModel)="userName" name="userName" id="userName" required type="text" class="form-control" placeholder="User Name..." />
     </div>
     <div class="form-group">
       <label for="password">Password:</label>
       <em *ngIf="loginForm.controls.password?.invalid
-                  && loginForm.controls.password?.touched">Required</em>
+                  && (loginForm.controls.password?.touched  || mouseEntered)">Required</em>
       <input (ngModel)="password" name="password" id="password" required type="password" class="form-control" placeholder="Password..." />
     </div>
 
-    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+
+
+    <span (mouseenter)="mouseEntered=true" (mouseleave)="mouseEntered=false">
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+    </span>
     <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
   </form>
 </div>
