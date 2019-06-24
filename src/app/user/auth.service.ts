@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IUser } from './user.model';
+import { findLast } from '@angular/compiler/src/directive_resolver';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +23,10 @@ export class AuthService {
   isAuthenticated(){
     return !!this.currentUser;
   }
+
+  updateUserProfile(firstName: string, lastName: string){
+    this.currentUser.firstName = firstName;
+    this.currentUser.lastName = lastName;
+  }
+
 }
