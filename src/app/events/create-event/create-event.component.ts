@@ -1,3 +1,4 @@
+import { EventService } from './../shared/event.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,13 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class CreateEventComponent implements OnInit {
 
   idDirty:boolean = false
+  newEvent
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private eventService: EventService) { }
 
   ngOnInit() {
   }
 
   click(){
+    this.router.navigate(['/events'])
+  }
+
+  saveEvent(formValues){
+    this.eventService.saveEvent(formValues);
     this.router.navigate(['/events'])
   }
 

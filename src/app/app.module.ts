@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './user/auth.service';
 import {
   EventRouteActivatorService,
@@ -30,6 +31,8 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [EventService, 
