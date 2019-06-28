@@ -7,7 +7,8 @@ import {
   EventThumbnailComponent,
   EventDetailsComponent,
   CreateEventComponent,
-  EventListResolverService
+  EventListResolverService,
+  CreateSessionComponent
 }from './events/index'
 
 import { appRoutes } from './../routes';
@@ -27,7 +28,8 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
     NavbarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
