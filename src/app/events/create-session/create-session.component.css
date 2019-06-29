@@ -3,7 +3,11 @@ em {
     color: rgb(236, 76, 13);
     padding-left: 10px;
 }
-.error input{
+.error input {
+    background-color: #e3c3c5;
+}
+
+.error textarea {
     background-color: #e3c3c5;
 }
 
