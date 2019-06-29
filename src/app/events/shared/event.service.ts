@@ -28,6 +28,12 @@ export class EventService {
     this.events.push(newEvent);
   }
 
+  updateEvent(event){
+    let index = this.events.findIndex(x=> x.id == event.id);
+
+    this.events[index] = event;
+  }
+
   private events: IEvent[] = [
     {
       id: 1,
