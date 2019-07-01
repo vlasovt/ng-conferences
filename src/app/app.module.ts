@@ -14,7 +14,7 @@ import {
 }from './events/index'
 
 import { appRoutes } from './../routes';
-import { ToasterService } from './common/toaster.service';
+import { TOASTR_TOKEN, Toastr } from './common/toaster.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -22,6 +22,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { CollapsableWellComponent } from './common/collapsable-well/collapsable-well.component';
+
+declare let toastr: Toastr
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import { CollapsableWellComponent } from './common/collapsable-well/collapsable-
     RouterModule.forRoot(appRoutes)
   ],
   providers: [EventService, 
-              ToasterService, 
+              {
+                provide: TOASTR_TOKEN,
+                useValue: toastr
+              }, 
               EventRouteActivatorService,
               {
                 provide: 'canDeactivateCreateEvent',
