@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { CollapsableWellComponent } from './common/collapsable-well/collapsable-well.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 declare let toastr: Toastr
 
@@ -43,6 +44,7 @@ declare let toastr: Toastr
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [EventService, 
