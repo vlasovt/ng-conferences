@@ -1,6 +1,6 @@
 import { ISession } from './../../events/shared/event.model';
 import { AuthService } from './../../user/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { EventService } from 'src/app/events';
 
 @Component({
@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     this.eventService.searchSessions(searchTerm).subscribe(
       sessions => {this.foundSessions = sessions}
     );
-    console.log(this.foundSessions);
+    //this.modalService.open(this.el)
   }
 
 }

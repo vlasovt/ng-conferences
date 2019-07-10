@@ -14,17 +14,17 @@ import {
 }from './events/index'
 
 import { appRoutes } from './../routes';
-import { TOASTR_TOKEN, Toastr } from './common/toaster.service';
+import { TOASTR_TOKEN, JQ_TOKEN, Toastr, CollapsableWellComponent, SimpleModalComponent} from './common/index'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { CollapsableWellComponent } from './common/collapsable-well/collapsable-well.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-declare let toastr: Toastr
+let toastr = window['toaster']
+let jQuery = window['$']
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ declare let toastr: Toastr
     CreateSessionComponent,
     SessionListComponent,
     CollapsableWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +52,10 @@ declare let toastr: Toastr
               {
                 provide: TOASTR_TOKEN,
                 useValue: toastr
+              }, 
+              {
+                provide: JQ_TOKEN,
+                useValue: jQuery
               }, 
               EventRouteActivatorService,
               {
