@@ -14,7 +14,14 @@ import {
 }from './events/index'
 
 import { appRoutes } from './../routes';
-import { TOASTR_TOKEN, JQ_TOKEN, Toastr, CollapsableWellComponent, SimpleModalComponent} from './common/index'
+import { TOASTR_TOKEN, 
+  JQ_TOKEN, 
+  Toastr, 
+  CollapsableWellComponent, 
+  SimpleModalComponent,
+  ModalTriggerDirective
+} 
+from './common/index'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -39,7 +46,8 @@ let jQuery = window['$']
     SessionListComponent,
     CollapsableWellComponent,
     DurationPipe,
-    SimpleModalComponent
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
