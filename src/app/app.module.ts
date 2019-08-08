@@ -1,13 +1,13 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './user/auth.service';
 import {
-  EventRouteActivatorService,
   EventService,
   EventsListComponent,
   EventThumbnailComponent,
   EventDetailsComponent,
   CreateEventComponent,
   EventListResolverService,
+  EventResolverService,
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe
@@ -29,6 +29,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './nav/navbar/navbar.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http'
 
 let toastr = window['toaster']
 let jQuery = window['$']
@@ -54,7 +55,8 @@ let jQuery = window['$']
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [EventService, 
               {
@@ -65,12 +67,8 @@ let jQuery = window['$']
                 provide: JQ_TOKEN,
                 useValue: jQuery
               }, 
-              EventRouteActivatorService,
-              {
-                provide: 'canDeactivateCreateEvent',
-                useValue: checkDirtyState
-              },
               EventListResolverService,
+              EventResolverService,
               AuthService
              ],
   bootstrap: [AppComponent]
